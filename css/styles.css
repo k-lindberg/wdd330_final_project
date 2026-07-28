@@ -1,0 +1,21 @@
+:root {
+   --heading-font: "Geo", sans-serif;
+   --body-font: "Roboto Condensed", sans-serif;
+   --background-color1: #FFFFFF;
+   --background-color2: #F5F5F5;
+   --primary-color1: #C91A09;
+   --primary-color2: #FAA49E;
+   --secondary-color1: #F2CD37;
+   --secondary-color2: #F9E79F;
+   --tertiary-color1: #0055BF;
+   --tertiary-color2: #85BCFF;
+   --neutral1: #EDEDED;
+   --neutral2: #BDBDBD;
+   --neutral3: #2B2B2B;
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
