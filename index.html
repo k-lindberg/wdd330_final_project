@@ -22,9 +22,26 @@
     <header id="header"></header>
     <main>
 
+        <section class="welcome">
+            <h1>Lego Set Collector</h1>
+            <p>Welcome to the Lego Set Collector App! Here you can filter sets by theme, save the sets you own to a list, save a Wishlist, and see a catalog of all the Minifigures you own based on the sets you own. Also, click the "Surprise Me!" Button to be shown a random Lego set!</p>
+            <button type="button" id="surpriseBtn">Surprise Me!</button>
+        </section>
 
+        <div>
+            <label for="theme">Theme:</label>
+            <select name="theme" id="themeSelect"></select>
+        </div>
+
+        <section id="setList" class="set-list"></section>
 
     </main>
+
+    <dialog id="setModal">
+        <div id="modalContent"></div>
+        <button type="button" id="closeBtn">X</button>
+    </dialog>
+
     <footer id="footer"></footer>
 </body>
 

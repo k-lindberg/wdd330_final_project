@@ -1,5 +1,5 @@
-function convertToJson(res) {
-    const jsonResponse = res.json();
+async function convertToJson(res) {
+    const jsonResponse = await res.json();
     if (res.ok) {
         return jsonResponse;
     } else {
@@ -12,6 +12,25 @@ const rebrickKey = "a088bdcd41c17fb4b78efae67b940bb4";
 
 export default class RebrickableAPI {
     
+    async getThemes() {
+        let allThemes = [];
+        let url = `${rebrickBaseURL}themes/?key=${rebrickKey}`;
+
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allThemes.push(...data.results);
+            url = data.next;
+        } 
+        return allThemes;
+    }
+
+    async getSetsByTheme(themeId) {
+        const response = await fetch(`${rebrickBaseURL}sets/?theme_id=${themeId}&key=${rebrickKey}`);
+        return convertToJson(response);
+    }
+
     async getSets(page = 1) {
         const response = await fetch(`${rebrickBaseURL}sets/?page=${page}&key=${rebrickKey}`);
         
