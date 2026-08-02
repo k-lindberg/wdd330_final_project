@@ -29,13 +29,13 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../partials/header.html");
-  const headerElement = document.querySelector("#header");
+    const headerTemplate = await loadTemplate("/wdd330_final_project/partials/header.html");
+    const headerElement = document.querySelector("#header");
 
-  renderWithTemplate(headerTemplate, headerElement);
+    renderWithTemplate(headerTemplate, headerElement);
 
-  const footerTemplate = await loadTemplate("../partials/footer.html");
-  const footerElement = document.querySelector("#footer");
+    const footerTemplate = await loadTemplate("/wdd330_final_project/partials/footer.html");
+    const footerElement = document.querySelector("#footer");
 
-  renderWithTemplate(footerTemplate, footerElement);
+    renderWithTemplate(footerTemplate, footerElement);
 }
