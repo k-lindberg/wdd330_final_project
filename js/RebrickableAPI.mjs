@@ -26,9 +26,34 @@ export default class RebrickableAPI {
         return allThemes;
     }
 
-    async getSetsByTheme(themeId) {
-        const response = await fetch(`${rebrickBaseURL}sets/?theme_id=${themeId}&key=${rebrickKey}`);
-        return convertToJson(response);
+    async getAllSets() {
+        let allSets = [];
+        let url = `${rebrickBaseURL}sets/?key=${rebrickKey}`;
+
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allSets.push(...data.results);
+            url = data.next;
+        }
+
+        return allSets;
+    }
+
+    async getAllSetsByTheme(themeId) {
+        let allSets = [];
+        let url = `${rebrickBaseURL}sets/?theme_id=${themeId}&key=${rebrickKey}`;
+
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allSets.push(...data.results);
+            url = data.next;
+        }
+
+        return allSets;
     }
 
     async getSets(page = 1) {
@@ -41,24 +66,51 @@ export default class RebrickableAPI {
         
         return convertToJson(response);
     }
-    async getMinifigs(page = 1) {
-        const response = await fetch(`${rebrickBaseURL}minifigs/?page=${page}&key=${rebrickKey}`);
+    async getAllMinifigs() {
+        let allMinifigs = [];
+        let url = `${rebrickBaseURL}minifigs/?key=${rebrickKey}`;
 
-        return convertToJson(response);
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allMinifigs.push(...data.results);
+            url = data.next;
+        }
+
+        return allMinifigs;
     }
     async getMinifigById(minifigId) {
         const response = await fetch(`${rebrickBaseURL}minifigs/${minifigId}/?key=${rebrickKey}`);
 
         return convertToJson(response);
     }
-    async getPartsForSet(setId) {
-        const response = await fetch(`${rebrickBaseURL}sets/${setId}/parts/?key=${rebrickKey}`);
+    async getAllPartsForSet(setId) {
+        let allParts = [];
+        let url = `${rebrickBaseURL}sets/${setId}/parts/?key=${rebrickKey}`;
 
-        return convertToJson(response);
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allParts.push(...data.results);
+            url = data.next;
+        }
+
+        return allParts;
     }
     async getMinifigsForSet(setId) {
-        const response = await fetch(`${rebrickBaseURL}sets/${setId}/minifigs/?key=${rebrickKey}`);
+        let allMinifigs = [];
+        let url = `${rebrickBaseURL}sets/${setId}/minifigs/?key=${rebrickKey}`;
 
-        return convertToJson(response);
+        while (url) {
+            const response = await fetch(url);
+            const data = await convertToJson(response);
+
+            allMinifigs.push(...data.results);
+            url = data.next;
+        }
+
+        return allMinifigs;
     }
 }

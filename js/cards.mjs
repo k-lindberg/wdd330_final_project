@@ -13,8 +13,10 @@ export function createSetCard(set) {
     const card = document.createElement("div");
     card.classList.add("set-card");
 
+    const img = set.set_img_url;
+
     card.innerHTML = `
-        <img src="${set.set_img_url}" alt="${set.name}">
+        <img src="${img}" alt="${set.name}">
         <h3>${set.name}</h3>
         <p>Set #: ${set.set_num}</p>
         <p>Year: ${set.year}</p>
