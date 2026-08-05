@@ -1,8 +1,9 @@
 import RebrickableAPI from "./RebrickableAPI.mjs";
-import { getBrickEconomyPrice } from "./BrickEconomyAPI.mjs";
+import FakeStoreAPI from "./FakeStoreAPI.mjs";
 import { renderThemeDropdown } from "./themeDropdown.mjs";
 import { renderSetCards } from "./cards.mjs";
-import { findPriceForSet, getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utilities.mjs";
+import { renderModal } from "./details.mjs";
+import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utilities.mjs";
 
 const rebrick = new RebrickableAPI();
 
