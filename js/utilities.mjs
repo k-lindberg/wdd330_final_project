@@ -30,8 +30,3 @@ export async function loadHeaderFooter() {
 
     renderWithTemplate(footerTemplate, footerElement);
 }
-
-export async function findPriceForSet(setNum) {
-    const match = window.goLegoSets.find(s => s.set_id === setNum);
-    return match?.us_retailprice ?? null;
-}

@@ -1,11 +1,11 @@
 import RebrickableAPI from "./RebrickableAPI.mjs";
-import GoLegoAPI from "./GoLegoAPI.mjs";
+import { getBrickEconomyPrice } from "./BrickEconomyAPI.mjs";
 import { renderThemeDropdown } from "./themeDropdown.mjs";
 import { renderSetCards } from "./cards.mjs";
 import { findPriceForSet, getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utilities.mjs";
 
 const rebrick = new RebrickableAPI();
-const goLego = new GoLegoAPI();
+
 
 const setList = document.getElementById("setList");
 const themeSelect = document.getElementById("themeSelect");
@@ -26,8 +26,6 @@ async function init() {
     }
  
     renderThemeDropdown(themes);
-
-    //window.goLegoSets = await goLego.getAllSets();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,14 +38,11 @@ themeSelect.addEventListener("change", async (e) => {
     renderSetCards(sets, setList);
 });
 
-async function openSetModal(setId) {
+export async function openSetModal(setId) {
     const setDetails = await rebrick.getSetById(setId);
-    const parts = await rebrick.getAllPartsForSet(setId);
-    const minifigs = await rebrick.getAllMinifigsForSet(setId);
-
-    const price = findPriceForSet(setId)
-
-    renderModal(setDetails, parts, minifigs, price);
+    const minifigs = await rebrick.getMinifigsForSet(setId);
+    
+    renderModal(setDetails, minifigs);
 }
 
 async function getRandomSet() {

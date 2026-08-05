@@ -23,3 +23,11 @@
 img {
     max-width: 200px;
 }
+
+.modal {
+    display: none;
+}
+
+.modal.open {
+    display: block;
+}
