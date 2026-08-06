@@ -2,6 +2,26 @@
 import { openSetModal } from "./modal.mjs";
 import { toggleSetInLocalStorage } from "./utilities.mjs";
 
+export function setInitialButtonState(set, card) {
+    const ownedSets = JSON.parse(localStorage.getItem("owned")) || [];
+    const wishlistSets = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const ownedBtn = card.querySelector(".ownedBtn");
+    const wishlistBtn = card.querySelector(".wishlistBtn");
+
+    if (ownedSets.some(s => s.set_num === set.set_num)) {
+        ownedBtn.textContent = "Owned ✓";
+    } else {
+        ownedBtn.textContent = "Owned";
+    }
+
+    if (wishlistSets.some(s => s.set_num === set.set_num)) {
+        wishlistBtn.textContent = "Added to Wishlist ❤️";
+    } else {
+        wishlistBtn.textContent = "Add to Wishlist";
+    }
+}
+
 export function renderSetCards(sets, container) {
     container.innerHTML = "";
 
@@ -22,6 +42,8 @@ export function createSetCard(set) {
         <h3>${set.name}</h3>
         <button type="button" class="detailsBtn">Details</button>
     `;
+
+    setInitialButtonState(set, card);
 
     card.querySelector(".ownedBtn").addEventListener("click", () => {
         const action = toggleSetInLocalStorage("owned", set);

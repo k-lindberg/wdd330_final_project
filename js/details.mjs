@@ -19,8 +19,8 @@ export async function renderModal(set, minifigs) {
 
             return `
             <div class="minifig">
-                ${imgHTML}
-                <p>${fig.set_name}</p>
+                <p>${fig.set_name}</p>    
+                ${imgHTML} 
             </div>
         `;
         }).join('')
