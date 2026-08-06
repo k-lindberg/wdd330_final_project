@@ -15,16 +15,27 @@
         href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/owned.mjs"></script>
 </head>
 
 <body>
     <header id="header"></header>
     <main>
 
+        <section>
+            <h1>List of Sets You Own</h1>
+            <p>This is where you can see all the sets you indicated that you own.</p>  
+        </section>
 
+        <div id="ownedCards"></div>
 
     </main>
+
+    <dialog id="setModal">
+        <div id="modalContent"></div>
+        <button type="button" id="closeBtn">X</button>
+    </dialog>
+
     <footer id="footer"></footer>
 </body>
 

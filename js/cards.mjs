@@ -1,6 +1,6 @@
 // Rendering Set Cards
-
-import { openSetModal } from "./main.mjs";
+import { openSetModal } from "./modal.mjs";
+import { toggleSetInLocalStorage } from "./utilities.mjs";
 
 export function renderSetCards(sets, container) {
     container.innerHTML = "";
@@ -22,6 +22,27 @@ export function createSetCard(set) {
         <h3>${set.name}</h3>
         <button type="button" class="detailsBtn">Details</button>
     `;
+
+    card.querySelector(".ownedBtn").addEventListener("click", () => {
+        const action = toggleSetInLocalStorage("owned", set);
+
+        if (action === "Added") {
+            card.querySelector(".ownedBtn").textContent = "Owned ✓";
+        } else {
+            card.querySelector(".ownedBtn").textContent = "Owned";
+        }
+        
+    });
+
+    card.querySelector(".wishlistBtn").addEventListener("click", () => {
+        const action = toggleSetInLocalStorage("wishlist", set);
+
+        if (action === "Added") {
+            card.querySelector(".wishlistBtn").textContent = "Added to Wishlist ❤️";
+        } else {
+            card.querySelector(".wishlistBtn").textContent = "Add to Wishlist";
+        }
+    });
 
     card.querySelector(".detailsBtn").addEventListener("click", () => {
         openSetModal(set.set_num);

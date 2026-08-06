@@ -5,6 +5,23 @@ export function setLocalStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+export function toggleSetInLocalStorage(key, set) {
+
+    let list = getLocalStorage(key) || [];
+
+    const exists = list.some(item => item.set_num === set.set_num);
+
+    if (exists) {
+        list = list.filter(item => item.set_num !== set.set_num);
+        setLocalStorage(key, list);
+        return "Removed";
+    }
+
+    list.push(set);
+    setLocalStorage(key, list);
+    return "Added";
+}
+
 export function renderWithTemplate(template, parentElement, data, callback) {
     parentElement.innerHTML = template;
     
