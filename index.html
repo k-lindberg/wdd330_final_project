@@ -22,11 +22,13 @@
     <header id="header"></header>
     <main>
 
-        <section class="welcome">
+        <section class="intro">
             <h1>Lego Set Collector</h1>
             <p>Welcome to the Lego Set Collector App! Here you can filter sets by theme, save the sets you own to a list, save a Wishlist, and see a catalog of all the Minifigures you own based on the sets you own. Also, click the "Surprise Me!" Button to be shown a random Lego set!</p>
             <button type="button" id="surpriseBtn">Surprise Me!</button>
         </section>
+
+        <div class="section-divider"></div>
 
         <div>
             <label>Theme: 
@@ -39,8 +41,17 @@
     </main>
 
     <dialog id="setModal">
-        <div id="modalContent"></div>
-        <button type="button" id="closeBtn">X</button>
+        <div class="detailWrapper">
+            <button type="button" id="closeBtn">x</button>
+            <div id="modalContent"></div> 
+        </div>
+    </dialog>
+
+    <dialog id="surpriseModal">
+        <div class="surpriseWrapper">
+            <button type="button" id="surpriseCloseBtn">x</button>
+            <div id="surpriseContent"></div>
+        </div>
     </dialog>
 
     <footer id="footer"></footer>

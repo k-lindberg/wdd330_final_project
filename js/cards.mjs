@@ -36,8 +36,10 @@ export function createSetCard(set) {
     card.classList.add("set-card");
 
     card.innerHTML = `
-        <button type="button" class="ownedBtn">Owned</button>
-        <button type="button" class="wishlistBtn">Add to Wishlist</button>
+        <div class="buttonRow">
+            <button type="button" class="ownedBtn">Owned</button>
+            <button type="button" class="wishlistBtn">Add to Wishlist</button>
+        </div>
         <img src="${set.set_img_url}" alt="${set.name}">
         <h3>${set.name}</h3>
         <button type="button" class="detailsBtn">Details</button>

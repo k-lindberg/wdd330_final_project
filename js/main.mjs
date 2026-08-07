@@ -4,6 +4,7 @@ import { renderThemeDropdown } from "./themeDropdown.mjs";
 import { renderSetCards } from "./cards.mjs";
 import { renderModal } from "./details.mjs";
 import { openSetModal } from "./modal.mjs";
+import { renderSurpriseModal } from "./details.mjs";
 import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utilities.mjs";
 
 const rebrick = new RebrickableAPI();
@@ -14,7 +15,7 @@ const surpriseBtn = document.getElementById("surpriseBtn");
 if (surpriseBtn) {
     surpriseBtn.addEventListener("click", async () => {
         const set = await getRandomSet();
-        openSetModal(set.set_num);
+        renderSurpriseModal(set);
     });
 }
 
