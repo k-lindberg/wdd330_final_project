@@ -49,17 +49,18 @@ export function createSetCard(set) {
 
     card.querySelector(".ownedBtn").addEventListener("click", () => {
         const action = toggleSetInLocalStorage("owned", set);
+        card.classList.add("owned-card");
 
         if (action === "Added") {
             card.querySelector(".ownedBtn").textContent = "Owned ✓";
         } else {
             card.querySelector(".ownedBtn").textContent = "Owned";
         }
-        
     });
 
     card.querySelector(".wishlistBtn").addEventListener("click", () => {
         const action = toggleSetInLocalStorage("wishlist", set);
+        card.classList.add("wishlist-card");
 
         if (action === "Added") {
             card.querySelector(".wishlistBtn").textContent = "Added to Wishlist ❤️";

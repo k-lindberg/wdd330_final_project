@@ -28,7 +28,7 @@ export async function renderModal(set, minifigs) {
         : `<p>No minifigures included.</p>`;
     
     modalContent.innerHTML = `
-        <img src="${set.set_img_url}" alt="${set.name}">
+        <img id="detailImg" loading="lazy" src="${set.set_img_url}" alt="${set.name}">
         <h3>${set.name}</h3>
         <p>Set #: ${formattedSetNum}</p>
         <p>Piece Count: ${set.num_parts}</p>
@@ -37,7 +37,15 @@ export async function renderModal(set, minifigs) {
         <h4>Minifigures: </h4>
         ${minifigHTML}
     `;
-    modal.renderModal();
+    const img = document.getElementById("detailImg");
+
+    if (img.complete) {
+        modal.renderModal();
+    } else {
+        img.addEventListener("load", () => {
+            modal.renderModal();
+        });
+    }
 }
 
 export const modal = {

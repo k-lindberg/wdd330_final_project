@@ -10,7 +10,7 @@
    --tertiary-color1: #0055BF;
    --tertiary-color2: #85BCFF;
    --neutral1: #EDEDED;
-   --neutral2: #BDBDBD;
+   --neutral2: #DADADA;
    --neutral3: #2B2B2B;
 }
 
@@ -52,6 +52,10 @@ header {
         margin: 2px;
         text-align: center;
         background-color: var(--background-color1);
+
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     & .nav a {
@@ -60,7 +64,12 @@ header {
         font-family: var(--heading-font);
         font-weight: 900;
         font-size: 1.1rem;
+
+        &:hover {
+            color: var(--primary-color1);
+        }
     }
+
 }
 
 main {
@@ -94,7 +103,7 @@ main {
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 8px 8px var(--secondary-color1);
+            box-shadow: 0 0 8px 5px var(--secondary-color1);
         }
     }
 
@@ -114,6 +123,12 @@ main {
         margin-bottom: 1rem;
         font-size: 1rem;
         border: 2px solid var(--secondary-color1);
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border-color: var(--secondary-color1);
+        }
     }
 
     & .section-divider {
@@ -124,14 +139,14 @@ main {
     }
 }
 
-.set-list {
+.set-list, .owned-list, .wishlist-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     justify-items: center;
 }
 
-.set-card {
+.set-card, .owned-card, .wishlist-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -147,6 +162,7 @@ main {
         object-fit: contain;
         display: block;
         margin: 0 auto;
+        padding: 5px;
     }
 
     & button {
@@ -157,6 +173,13 @@ main {
         cursor: pointer;
         font-weight: 900;
         font-family: var(--heading-font);
+        line-height: 20px;
+
+        &:hover {
+            font-size: 1rem;
+            color: var(--tertiary-color1);
+            background-color: var(--neutral2);
+        }
     }
 
     & h3 {
@@ -192,6 +215,7 @@ dialog img {
     max-width: none;
     height: auto;
     display: block;
+    padding: 5px;
 }
 
 dialog::backdrop {
@@ -242,6 +266,10 @@ dialog::backdrop {
     }
 }
 
+.detailWrapper {
+    animation: flipIn 0.6s ease;
+}
+
 .surpriseWrapper {
     animation: brickPop 0.3s ease-out;
 }
@@ -252,6 +280,17 @@ dialog::backdrop {
     100% { transform: scale(1) rotate(0deg);}
 }
 
+@keyframes flipIn {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
 footer {
     background-color: var(--background-color2);
     padding: 20px;
@@ -260,12 +299,12 @@ footer {
 }
 
 @media (min-width: 550px) {
-    .set-list {
+    .set-list, .owned-list, .wishlist-list {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
     }
 
-    .set-card {
+    .set-card, .owned-card, .wishlist-card {
         width: 100%;
         max-width: 350px;
     }
@@ -291,12 +330,22 @@ footer {
         }
     }
 
-    .set-list {
+    .set-list, .owned-list, .wishlist-list {
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
     }
 
     .set-card button {
         font-size: .9rem;
+    }
+
+    .footer-section {
+        display: flex;
+        justify-content: space-between;
+        gap: 5rem;
+
+        & > div {
+            flex: 1;
+        }
     }
 }
