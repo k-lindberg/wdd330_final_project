@@ -88,7 +88,7 @@ main {
     }
 
     & .intro p {
-        padding-bottom: .8rem;
+        padding: .8rem 2rem;
     }
 
     & .intro button {
@@ -300,6 +300,11 @@ footer {
 }
 
 @media (min-width: 550px) {
+
+    main .intro p {
+        padding: 0 3rem 1rem;
+    }
+
     .set-list, .owned-list, .wishlist-list {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
@@ -329,6 +334,10 @@ footer {
             font-size: 1.4rem;
             margin: 10px;
         }
+    }
+
+    main .intro p {
+        padding: 0 8rem 1rem;
     }
 
     .set-list, .owned-list, .wishlist-list {
